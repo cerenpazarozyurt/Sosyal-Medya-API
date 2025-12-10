@@ -1,59 +1,109 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+📸 **Sosyal Medya API (Laravel & Sanctum)**
+Bu proje, modern bir sosyal medya uygulamasının backend mimarisini Laravel 11, Sanctum ile yetkilendirme, Eloquent ORM, Database Notifications ve Swagger UI desteği ile baştan sona oluşturur. Ayrıca tüm kritik aksiyonlar Policy, Authorization, Validation ve Soft Security katmanları ile korunmaktadır.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+✨ **Temel Özellikler**
+Bu API, basit CRUD işlemlerinin ötesine geçerek bir sosyal medya uygulamasının gerektirdiği gelişmiş özellikleri sunar:
 
-## About Laravel
+**Token Tabanlı Yetkilendirme:** Güvenli oturum yönetimi için Laravel Sanctum (SPA ve API Tokenları).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Kapsamlı Kullanıcı Etkileşimleri:** Takip etme/takipten çıkma, kullanıcı engelleme/engeli kaldırma.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**İçerik Yönetimi:** Gönderi (Post) oluşturma (çoklu medya desteğiyle), düzenleme, silme ve arşivleme/arşivden çıkarma işlevleri.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Akıllı Akış Algoritması:** Kullanıcıya özel feed; sadece takip edilenlerin ve kişinin kendi postlarını içerir, engellenen kişilerin içerikleri otomatik filtrelenir.
 
-## Learning Laravel
+**Hikaye (Story) Özelliği:** 24 saat süreli medya tabanlı hikayeler oluşturma ve feed üzerinden görüntüleme. StoryPolicy ile sıkı erişim kontrolü.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+**Zengin Post Etkileşimleri:** Beğenme/beğeniyi kaldırma, yorum yapma ve post kaydetme (bookmark).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Gerçek Zamanlı Bildirimler:** Yeni takipçi, beğeni ve yorumlar için veritabanı tabanlı bildirim sistemi.
 
-## Laravel Sponsors
+**Admin/Geliştirici Odaklı:** Spatie Activitylog ile detaylı sistem ve kullanıcı aksiyon loglaması.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+🚀 **Teknolojiler**
+ -Backend: PHP, Laravel Framework
 
-### Premium Partners
+ -Veritabanı: MySQL
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+ -Yetkilendirme: Laravel Sanctum
 
-## Contributing
+ -API Dökümantasyonu: Swagger
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+ -Loglama: Spatie Activitylog
 
-## Code of Conduct
+🔑 **Endpoint'ler**
+Aşağıda sistemin ana endpoint grupları listelenmiştir.
+Detaylar Swagger üzerinden görülebilir.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+🔐 **Yetkilendirme & Kullanıcı**
+Metot,   Uç Nokta,              Açıklama
+POST,   /register,          Yeni kullanıcı kaydı. (Token döndürür)
+POST,   /login,             Kullanıcı girişi. (Token döndürür)
+POST,   /logout,            Mevcut oturumdan çıkış. (Sanctum gereklidir)
+GET,    /me,                Giriş yapan kullanıcının profil bilgilerini getirir.
+PUT,    /me,                Profil bilgilerini (ad, kullanıcı adı, bio,profil fotoğrafını) günceller.
+POST,   /me/avatar,         Profil fotoğrafı yükler. (Multipart form-data)
+GET,    /users?search=,     Kullanıcıları name veya username ile arar.
+                            (Engellenenler filtrelenir)
+GET,    /admin/logs,        Tüm sistem aktivitelerini listeler.(Yönetici yetkisi gerektirir)
 
-## Security Vulnerabilities
+📰 **Gönderiler (Posts)**
+Metot,      Uç Nokta,                       Açıklama
+GET,       /feed,                      Takip edilenlerin ve kişinin kendi postlarını içeren 
+                                       ana sayfa akışı.
+POST,      /posts,                     Yeni gönderi oluşturur. (Çoklu medya ve konum desteği)
+PUT,       /posts/{post},              Mevcut gönderiyi düzenler. (Sadece sahibi)
+DELETE,    /posts/{post},              Gönderiyi siler. (Sadece sahibi)
+POST,      /posts/{post}/archive,      Gönderiyi ana akıştan kaldırır. (Sadece sahibi)
+POST,      /posts/{post}/unarchive,    Arşivlenmiş gönderiyi geri alır. (Sadece sahibi)
+GET,       /my-posts,                  Kişinin kendi aktif gönderilerini listeler.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+❤️ **Etkileşimler & Sosyal Özellikler**
+Metot,      Uç Nokta,                     Açıklama
+POST,     /posts/{post}/like,        Gönderiyi beğenir/beğeniyi kaldırır. (Toggle)
+GET,      /posts/{post}/likes,       Gönderiyi beğenen kullanıcıları listeler.
+POST,     /posts/{post}/comments,    Gönderiye yorum yapar. (Post sahibine bildirim gider.)
+DELETE,   /comments/{comment},       Yorumu siler. (Sahibi veya post sahibi silebilir)
+POST,     /follow/{user},            Kullanıcıyı takip eder/takipten çıkar. (Takip edilen
+                                     kullanıcıya bildirim gönderir.)
+GET,      /users/{user}/followers,   Belirtilen kullanıcının takipçilerini listeler.
+POST,     /block/{user},             Kullanıcıyı engeller/engeli kaldırır. (Toggle)
+GET,      /blocked-users,            Giriş yapan kullanıcının engellediği kişileri listeler.
+POST,     /posts/{post}/bookmark,    Gönderiyi kaydeder/kayıttan çıkarır. (Toggle)
+GET,      /saved-posts,              Kaydedilmiş gönderileri listeler.
 
-## License
+⏳ **Hikayeler (Stories) & Bildirimler**
+Metot,    Uç Nokta,                         Açıklama
+POST,    /stories,                       Yeni, 24 saat süreli hikaye (fotoğraf/video) ekler.
+GET,     /stories/feed,                  Takip edilenlerin ve kişinin kendi aktif 
+                                         hikayelerini gruplanmış olarak getirir.
+POST,    /stories/{story}/view,          Hikayeyi görüntüler.(Görüntülenme sayısını artırır.)
+GET,     /notifications,                 Tüm bildirimleri getirir ve okunmamışları otomatik 
+                                         olarak okundu işaretler.
+GET,     /notifications/unread-count,    Okunmamış bildirim sayısını getirir.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+💡 **Proje Detayları ve Gelişmiş Uygulamalar**
+1. *Yetkilendirme ve Loglama (Auth & Admin)*
+  -Sanctum ve Activity Log: Kullanıcı kayıt, giriş ve çıkış işlemleri, IP adresi ve kullanıcı aracısı (User Agent) bilgileriyle birlikte Spatie Activitylog kullanılarak detaylıca loglanmıştır. Yönetici uç noktası (/api/admin/logs) üzerinden bu kayıtlara erişilebilir.
+
+  -Token Yönetimi: Giriş ve kayıt sonrası dönen token, yetkili API çağrıları için kullanılmalıdır.
+
+2. *Sosyal İlişki Yönetimi (Follow & Block)*
+  -FollowController ve BlockController üzerindeki toggle metotları, tek bir çağrı ile takip etme/bırakma ve engelleme/engeli kaldırma işlemlerini gerçekleştirerek kod tekrarını azaltır ve istemci tarafındaki mantığı basitleştirir.
+
+  -Soft Security (Engelleme Entegrasyonu): Kullanıcı arama (/users) ve ana akış (/feed) endpoint'leri, kullanıcının engellediği kişilerin içeriklerini ve profillerini otomatik olarak sonuçlardan hariç tutar.
+
+3. *Politikalar (Policies) ile Yetkilendirme*
+Proje, hassas işlemlerin yetkilendirilmesi için Laravel'in Policy yapısını kullanmaktadır:
+
+  -PostPolicy: Bir gönderiyi sadece sahibinin düzenleyebilmesini/silebilmesini sağlar. Ayrıca post arşivleme/arşivden çıkarma işlemleri de bu politika üzerinden yetkilendirilir.
+
+  -CommentPolicy: Yorum silme yetkisi, yorumun sahibine veya yorumun yapıldığı postun sahibine verilerek esneklik sağlanmıştır.
+
+  -StoryPolicy: Hikayeyi sadece sahibi silebilir ve görüntüleyenleri görebilir.
+
+4. *Medya ve Post İşlemleri*
+  -Çoklu Medya Yükleme: PostController@store metodu, tek bir gönderi altında birden fazla fotoğraf veya video (max 10 adet) yüklenmesini destekler. Dosyalar, uygun depolama diskine kaydedilir.
+
+  -Arşivleme (Archiving): archived_at alanı üzerinden postların "soft-delete" mantığına benzer şekilde akıştan kaldırılıp, kullanıcının profilinde kalması sağlanmıştır.
