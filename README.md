@@ -49,7 +49,7 @@ GET,    /users?search=,     Kullanıcıları name veya username ile arar.
 GET,    /admin/logs,        Tüm sistem aktivitelerini listeler.(Yönetici yetkisi gerektirir)
 
 📰 **Gönderiler (Posts)**
-Metot,      Uç Nokta,                       Açıklama
+Metot,       Uç Nokta,                       Açıklama
 GET,       /feed,                      Takip edilenlerin ve kişinin kendi postlarını içeren 
                                        ana sayfa akışı.
 POST,      /posts,                     Yeni gönderi oluşturur. (Çoklu medya ve konum desteği)
