@@ -1,4 +1,5 @@
-📸 **Sosyal Medya API (Laravel & Sanctum)**
+📸 **Sosyal Medya API**
+
 Bu proje, modern bir sosyal medya uygulamasının backend mimarisini Laravel 11, Sanctum ile yetkilendirme, Eloquent ORM, Database Notifications ve Swagger UI desteği ile baştan sona oluşturur. Ayrıca tüm kritik aksiyonlar Policy, Authorization, Validation ve Soft Security katmanları ile korunmaktadır.
 
 ✨ **Temel Özellikler**
