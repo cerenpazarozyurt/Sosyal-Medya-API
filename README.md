@@ -41,85 +41,85 @@ Detaylar Swagger üzerinden görülebilir.
 
 🔐 **Yetkilendirme & Kullanıcı**
 
-Metot,   Uç Nokta,              Açıklama
+Metot,       Uç Nokta,                     Açıklama
 
-POST,   /register,          Yeni kullanıcı kaydı. (Token döndürür)
+POST,       /register,              Yeni kullanıcı kaydı. (Token döndürür)
 
-POST,   /login,             Kullanıcı girişi. (Token döndürür)
+POST,       /login,                 Kullanıcı girişi. (Token döndürür)
 
-POST,   /logout,            Mevcut oturumdan çıkış. (Sanctum gereklidir)
+POST,       /logout,                Mevcut oturumdan çıkış. (Sanctum gereklidir)
 
-GET,    /me,                Giriş yapan kullanıcının profil bilgilerini getirir.
+GET,        /me,                    Giriş yapan kullanıcının profil bilgilerini getirir.
 
-PUT,    /me,                Profil bilgilerini (ad, kullanıcı adı, bio,profil fotoğrafını) günceller.
+PUT,        /me,                    Profil bilgilerini (ad, kullanıcı adı, bio,profil fotoğrafını) günceller.
 
-POST,   /me/avatar,         Profil fotoğrafı yükler. (Multipart form-data)
+POST,       /me/avatar,             Profil fotoğrafı yükler. (Multipart form-data)
 
-GET,    /users?search=,     Kullanıcıları name veya username ile arar.
-                            (Engellenenler filtrelenir)
+GET,        /users?search=,         Kullanıcıları name veya username ile arar.
+                                    (Engellenenler filtrelenir)
                             
-GET,    /admin/logs,        Tüm sistem aktivitelerini listeler.(Yönetici yetkisi gerektirir)
+GET,        /admin/logs,            Tüm sistem aktivitelerini listeler.(Yönetici yetkisi gerektirir)
 
 
 📰 **Gönderiler (Posts)**
 
-Metot,       Uç Nokta,                       Açıklama
+Metot,          Uç Nokta,                           Açıklama
 
-GET,       /feed,                      Takip edilenlerin ve kişinin kendi postlarını içeren 
-                                       ana sayfa akışı.
+GET,           /feed,                          Takip edilenlerin ve kişinin kendi postlarını içeren 
+                                               ana sayfa akışı.
                                        
-POST,      /posts,                     Yeni gönderi oluşturur. (Çoklu medya ve konum desteği)
+POST,          /posts,                         Yeni gönderi oluşturur. (Çoklu medya ve konum desteği)
 
-PUT,       /posts/{post},              Mevcut gönderiyi düzenler. (Sadece sahibi)
+PUT,           /posts/{post},                  Mevcut gönderiyi düzenler. (Sadece sahibi)
 
-DELETE,    /posts/{post},              Gönderiyi siler. (Sadece sahibi)
+DELETE,        /posts/{post},                  Gönderiyi siler. (Sadece sahibi)
 
-POST,      /posts/{post}/archive,      Gönderiyi ana akıştan kaldırır. (Sadece sahibi)
+POST,          /posts/{post}/archive,          Gönderiyi ana akıştan kaldırır. (Sadece sahibi)
 
-POST,      /posts/{post}/unarchive,    Arşivlenmiş gönderiyi geri alır. (Sadece sahibi)
+POST,          /posts/{post}/unarchive,        Arşivlenmiş gönderiyi geri alır. (Sadece sahibi)
 
-GET,       /my-posts,                  Kişinin kendi aktif gönderilerini listeler.
+GET,           /my-posts,                      Kişinin kendi aktif gönderilerini listeler.
 
 ❤️ **Etkileşimler & Sosyal Özellikler**
 
-Metot,      Uç Nokta,                     Açıklama
+Metot,           Uç Nokta,                             Açıklama
 
-POST,     /posts/{post}/like,        Gönderiyi beğenir/beğeniyi kaldırır. (Toggle)
+POST,         /posts/{post}/like,            Gönderiyi beğenir/beğeniyi kaldırır. (Toggle)
 
-GET,      /posts/{post}/likes,       Gönderiyi beğenen kullanıcıları listeler.
+GET,          /posts/{post}/likes,           Gönderiyi beğenen kullanıcıları listeler.
 
-POST,     /posts/{post}/comments,    Gönderiye yorum yapar. (Post sahibine bildirim gider.)
+POST,         /posts/{post}/comments,        Gönderiye yorum yapar. (Post sahibine bildirim gider.)
 
-DELETE,   /comments/{comment},       Yorumu siler. (Sahibi veya post sahibi silebilir)
+DELETE,       /comments/{comment},           Yorumu siler. (Sahibi veya post sahibi silebilir)
 
-POST,     /follow/{user},            Kullanıcıyı takip eder/takipten çıkar. (Takip edilen
-                                     kullanıcıya bildirim gönderir.)
+POST,         /follow/{user},                Kullanıcıyı takip eder/takipten çıkar. (Takip edilen
+                                             kullanıcıya bildirim gönderir.)
                                      
-GET,      /users/{user}/followers,   Belirtilen kullanıcının takipçilerini listeler.
+GET,          /users/{user}/followers,       Belirtilen kullanıcının takipçilerini listeler.
 
-POST,     /block/{user},             Kullanıcıyı engeller/engeli kaldırır. (Toggle)
+POST,         /block/{user},                 Kullanıcıyı engeller/engeli kaldırır. (Toggle)
 
-GET,      /blocked-users,            Giriş yapan kullanıcının engellediği kişileri listeler.
+GET,          /blocked-users,                Giriş yapan kullanıcının engellediği kişileri listeler.
 
-POST,     /posts/{post}/bookmark,    Gönderiyi kaydeder/kayıttan çıkarır. (Toggle)
+POST,         /posts/{post}/bookmark,        Gönderiyi kaydeder/kayıttan çıkarır. (Toggle)
 
-GET,      /saved-posts,              Kaydedilmiş gönderileri listeler.
+GET,          /saved-posts,                  Kaydedilmiş gönderileri listeler.
 
 ⏳ **Hikayeler (Stories) & Bildirimler**
 
-Metot,    Uç Nokta,                         Açıklama
+Metot,         Uç Nokta,                                 Açıklama
 
-POST,    /stories,                       Yeni, 24 saat süreli hikaye (fotoğraf/video) ekler.
+POST,        /stories,                           Yeni, 24 saat süreli hikaye (fotoğraf/video) ekler.
 
-GET,     /stories/feed,                  Takip edilenlerin ve kişinin kendi aktif 
-                                         hikayelerini gruplanmış olarak getirir.
+GET,         /stories/feed,                      Takip edilenlerin ve kişinin kendi aktif 
+                                                 hikayelerini gruplanmış olarak getirir.
                                          
-POST,    /stories/{story}/view,          Hikayeyi görüntüler.(Görüntülenme sayısını artırır.)
+POST,        /stories/{story}/view,              Hikayeyi görüntüler.(Görüntülenme sayısını artırır.)
 
-GET,     /notifications,                 Tüm bildirimleri getirir ve okunmamışları otomatik 
-                                         olarak okundu işaretler.
+GET,         /notifications,                     Tüm bildirimleri getirir ve okunmamışları otomatik 
+                                                 olarak okundu işaretler.
                                          
-GET,     /notifications/unread-count,    Okunmamış bildirim sayısını getirir.
+GET,         /notifications/unread-count,        Okunmamış bildirim sayısını getirir.
 
 
 💡 **Proje Detayları ve Gelişmiş Uygulamalar**
